@@ -1,9 +1,19 @@
 import React from 'react';
 
-const SideBar = ( props ) => {
+import { Icon } from './Icon';
+
+import { data } from './data';
+
+const Sidebar =  () => {
+  const { cardList } = data;
+
   return (
-    <div className='SideBar'></div>
+    <div className='Sidebar'>
+      { cardList.map((card) => {
+        return <Icon key={ card.id } icon={ card.icon } name={ card.name } />;
+      }) }
+    </div>
   );
 };
 
-export { SideBar };
+export { Sidebar };
