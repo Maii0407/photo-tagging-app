@@ -2,15 +2,13 @@ import React from 'react';
 
 import { Icon } from './Icon';
 
-import { data } from './data';
-
-const Sidebar =  () => {
-  const { cardList } = data;
+const Sidebar =  ( props ) => {
+  const { cardList } = props;
 
   return (
     <div className='Sidebar'>
-      { cardList.map((card) => {
-        return <Icon key={ card.id } icon={ card.icon } name={ card.name } />;
+      { cardList.map((item) => {
+        return <Icon key={ item.id } icon={ item.icon } name={ item.name } />;
       }) }
     </div>
   );
