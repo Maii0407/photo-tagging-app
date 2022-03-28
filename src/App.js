@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Photo } from './components/Photo';
 import { Header } from './components/Header';
@@ -11,12 +11,14 @@ import { data } from './components/data';
 const App = () => {
   const { cardList } = data;
 
+  const [ findItems, setFindItems ] = useState( cardList );
+
   return (
     <div className='App' >
       <Header header={ `Find That Pokémon` }/>
       <div className='content-container'>
-        <Sidebar cardList={ cardList }/>
-        <Photo cardList={ cardList } photo={ murataArt } alt=' PHOTO OF POKEMON FANART '/>
+        <Sidebar findItems={ findItems }/>
+        <Photo findItems={ findItems } photo={ murataArt } alt=' PHOTO OF POKEMON FANART '/>
       </div>
     </div>
   );

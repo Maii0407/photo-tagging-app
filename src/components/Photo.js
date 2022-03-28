@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Dropdown } from './Dropdown';
 
 const Photo = ( props ) => {
-  const { cardList } = props;
+  const { findItems } = props;
 
   const [ menuState, setMenuState ] = useState('hide');
   const [ menuPos, setMenuPos ] = useState({ left: 0, top: 0 });
@@ -30,7 +30,7 @@ const Photo = ( props ) => {
   return (
     <div className='Photo'>
       <img onClick={handleClick} src={ props.photo } alt={ props.alt } />
-      <Dropdown cardList={ cardList } top={ menuPos.top } left={ menuPos.left }/>
+      <Dropdown findItems={ findItems } top={ menuPos.top } left={ menuPos.left }/>
     </div>
   );
 };
