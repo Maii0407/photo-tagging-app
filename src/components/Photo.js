@@ -9,7 +9,7 @@ const Photo = ( props ) => {
   const [ menuPos, setMenuPos ] = useState({ left: 0, top: 0 });
 
   const getPosition = (e) => {
-    setMenuPos( state => ({ ...state, left: e.pageX, top: e.pageY }));
+    setMenuPos( state => ({ ...state, left: e.pageX - 49, top: e.pageY - 49 }));
   };
 
   const showDropdown = () => {

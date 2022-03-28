@@ -50,22 +50,31 @@ body {
   position: absolute;
 }
 
-.Dropdown .target-box {
-  width: 50px;
-  height: 50px;
-  border: 1px solid black;
-}
-
-.Dropdown .menu-item {
+.Dropdown .menu {
   display: flex;
   flex-direction: row;
-  background-color: silver;
-  border: 1px solid black;
 }
 
-.Dropdown .menu-item img {
-  width: 25px;
-  height: 25px;
+.Dropdown .menu .target-box {
+  width: 100px;
+  height: 100px;
+  border: 5px solid black;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.Dropdown .menu .menu-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item p {
+  border: 1px solid black;
+  background-color: silver;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
 }
 
 /* styling for SideBar component */

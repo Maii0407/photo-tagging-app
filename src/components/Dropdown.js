@@ -5,13 +5,14 @@ const Dropdown = ( props ) => {
 
   return (
     <div className='Dropdown' id='myDropdown' style={{ top: props.top, left: props.left }}>
-      <div className='target-box'></div>
-      { cardList.map(( item ) => {
-        return <div key={ item.id } className='menu-item'>
-          <img src={ item.icon } alt={ item.name }/>
-          <p>{ item.name }</p>
+      <div className='menu'>
+        <div className='target-box'></div>
+        <div className='menu-item'>
+          { cardList.map(( item ) => {
+            return <p key={ item.id }>{ item.name }</p>
+          }) }
         </div>
-      })}
+      </div>
     </div>
   );
 };
