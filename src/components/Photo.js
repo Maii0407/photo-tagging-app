@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Dropdown } from './Dropdown';
 
 const Photo = ( props ) => {
-  const { findItems } = props;
+  const { findItems, mapCoords } = props;
 
   const [ menuState, setMenuState ] = useState('hide');
   const [ menuPos, setMenuPos ] = useState({ left: 0, top: 0 });
@@ -22,6 +22,13 @@ const Photo = ( props ) => {
     }
   };
 
+  const getCoords = (e) => {
+    let x = e.clientX; //horizontal coords
+    let y = e.clientY; //vertical coords
+
+    console.log( `hori coords: ${x} verti coords: ${y}` );
+  };
+
   const handleClick = (e) => {
     getPosition(e);
     showDropdown();
@@ -29,7 +36,12 @@ const Photo = ( props ) => {
 
   return (
     <div className='Photo'>
-      <img onClick={handleClick} src={ props.photo } alt={ props.alt } />
+      <img onClick={getCoords} src={ props.photo } alt={ props.alt } useMap='#photo-map' />
+      <map name='photo-map'>
+        { mapCoords.map((item) => {
+          return <area key={ item.id } shape='rect' coords={ item.coords } alt={ item.name }/>
+        }) }
+      </map>
       <Dropdown findItems={ findItems } top={ menuPos.top } left={ menuPos.left }/>
     </div>
   );
