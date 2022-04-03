@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { collection, getDoc, getDocs } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 
 import { Photo } from './components/Photo';
 import { Header } from './components/Header';
@@ -22,13 +22,17 @@ const App = () => {
     setMapCoords( data.docs.map(( doc ) => ({ ...doc.data() })));
   };
 
+  const removeFindItems = ( obj ) => {
+    setFindItems( findItems.filter(( val ) => val.name !== obj.name ) );
+  };
+
   return (
     <div className='App' >
       <Header header={ `Find That Pokémon` }/>
       <button onClick={ getCoords } >CLICK ME</button>
       <div className='content-container'>
         <Sidebar findItems={ findItems }/>
-        <Photo mapCoords={ mapCoords } findItems={ findItems } photo={ murataArt } alt=' PHOTO OF POKEMON FANART '/>
+        <Photo mapCoords={ mapCoords } findItems={ findItems } removeFindItems={ removeFindItems } photo={ murataArt } alt=' PHOTO OF POKEMON FANART '/>
       </div>
     </div>
   );
