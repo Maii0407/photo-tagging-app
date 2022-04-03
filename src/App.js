@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
+import Snackbar from '@material-ui/core/Snackbar';
 
 import { Photo } from './components/Photo';
 import { Header } from './components/Header';
@@ -16,6 +17,8 @@ const App = () => {
 
   const [ findItems, setFindItems ] = useState( cardList );
   const [ mapCoords, setMapCoords ] = useState([]);
+  const [ currentItem, setCurrentItem ] = useState('');
+  const [ openSnackbar, setOpenSnackbar ] = useState( false );
 
   const getCoords = async () => {
     const data = await getDocs( coordsRef );
@@ -26,14 +29,32 @@ const App = () => {
     setFindItems( findItems.filter(( val ) => val.name !== obj.name ) );
   };
 
+  const onOpen = () => {
+    setOpenSnackbar( true );
+  };
+
+  const closeSnckbar = ( e, reason ) => {
+    if( 'clickaway' === reason ){
+      return;
+    } else {
+      setOpenSnackbar( false );
+    }
+  };
+
   return (
     <div className='App' >
       <Header header={ `Find That Pokémon` }/>
       <button onClick={ getCoords } >CLICK ME</button>
       <div className='content-container'>
         <Sidebar findItems={ findItems }/>
-        <Photo mapCoords={ mapCoords } findItems={ findItems } removeFindItems={ removeFindItems } photo={ murataArt } alt=' PHOTO OF POKEMON FANART '/>
+        <Photo currentItem={ currentItem } setCurrentItem={ setCurrentItem }
+        mapCoords={ mapCoords } findItems={ findItems }
+        removeFindItems={ removeFindItems } photo={ murataArt }
+        onOpen={ onOpen }
+        alt=' PHOTO OF POKEMON FANART '/>
       </div>
+      <Snackbar open={ openSnackbar } autoHideDuration={ 500 }
+      onClose={ closeSnckbar } message={ `${currentItem} is found` } />
     </div>
   );
 };

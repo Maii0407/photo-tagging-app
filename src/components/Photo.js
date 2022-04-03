@@ -4,11 +4,10 @@ import { Dropdown } from './Dropdown';
 import { AreaMap } from './AreaMap';
 
 const Photo = ( props ) => {
-  const { findItems,removeFindItems, mapCoords } = props;
+  const { findItems,removeFindItems, mapCoords, currentItem, setCurrentItem, onOpen } = props;
 
   const [ menuState, setMenuState ] = useState('hide');
   const [ menuPos, setMenuPos ] = useState({ left: 0, top: 0 });
-  const [ currentItem, setCurrentItem ] = useState('');
 
 //get position for where the dropdown menu will appear
   const getPosition = (e) => {
@@ -55,7 +54,9 @@ const Photo = ( props ) => {
           return <AreaMap key={ item.id } item={ item } handleClick={ handleClick } itemFunc={ () => { itemSelected( item ) } } />
         }) }
       </map>
-      <Dropdown showDropdown={ showDropdown } foundItem={ foundItem } findItems={ findItems } top={ menuPos.top } left={ menuPos.left }/>
+      <Dropdown showDropdown={ showDropdown } foundItem={ foundItem } 
+      findItems={ findItems } top={ menuPos.top } left={ menuPos.left }
+      onOpen={ onOpen }/>
     </div>
   );
 };

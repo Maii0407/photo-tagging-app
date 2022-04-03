@@ -1,11 +1,12 @@
 import React from 'react';
 
 const Dropdown = ( props ) => {
-  const { findItems, foundItem, showDropdown } = props;
+  const { findItems, foundItem, showDropdown, onOpen } = props;
 
   const handleClickMenu = ( obj ) => {
     foundItem( obj );
     showDropdown();
+    onOpen();
   }
 
   return (
