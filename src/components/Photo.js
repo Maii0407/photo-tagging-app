@@ -29,6 +29,7 @@ const Photo = ( props ) => {
       return;
     } else if( currentItem === obj.name ) {
       removeFindItems( obj );
+      onOpen();
     }
   };
 
@@ -55,8 +56,7 @@ const Photo = ( props ) => {
         }) }
       </map>
       <Dropdown showDropdown={ showDropdown } foundItem={ foundItem } 
-      findItems={ findItems } top={ menuPos.top } left={ menuPos.left }
-      onOpen={ onOpen }/>
+      findItems={ findItems } top={ menuPos.top } left={ menuPos.left }/>
     </div>
   );
 };

@@ -2,8 +2,82 @@ body {
   background-color: gray;
 }
 
-map, area {
+map, area, button {
   cursor: pointer;
+}
+
+/* styling for the start new game screen?? */
+#overlay {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+
+.startContainer {
+  width: 70%;
+  height: 70%;
+  position: fixed;
+  left: 50%;
+  transform: translate( -50%, 0 );  
+
+  background-color: silver;
+  border: 1px solid silver;
+  border-radius: 10px;
+  margin-top: 10%;
+
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+
+  z-index: 3;
+}
+
+.startContainer h1 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.startContainer button {
+  width: 30%;
+  height: 30px;
+  align-self: center;
+  margin-bottom: 15px;
+
+  background-color: green;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.startContainer button:hover {
+  background-color: white;
+  border: 1px solid green;
+  color: green;
+}
+
+.findUsList {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat( 4, 1fr );
+  grid-template-rows: repeat( 4, 1fr );
+}
+
+.findUsList .Icon {
+  width: 100%;
+  height: 100%;
+}
+
+.findUsList .Icon img {
+  width: 50px;
+  height: 50px;
+  justify-self: center;
 }
 
 /* styling for App component */

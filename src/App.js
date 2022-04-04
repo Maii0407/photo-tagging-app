@@ -5,11 +5,13 @@ import Snackbar from '@material-ui/core/Snackbar';
 import { Photo } from './components/Photo';
 import { Header } from './components/Header';
 import { Sidebar } from './components/SideBar';
+import { Icon } from './components/Icon';
 
 import './App.css';
 import murataArt from './assets/murata-POKEMON.png';
 import { data } from './components/data';
 import { database } from './firebase-config';
+import { SnackbarContent } from '@material-ui/core';
 
 const App = () => {
   const { cardList } = data;
@@ -23,6 +25,7 @@ const App = () => {
   const getCoords = async () => {
     const data = await getDocs( coordsRef );
     setMapCoords( data.docs.map(( doc ) => ({ ...doc.data() })));
+    document.getElementById( 'overlay' ).style.display = 'none';
   };
 
   const removeFindItems = ( obj ) => {
@@ -44,7 +47,17 @@ const App = () => {
   return (
     <div className='App' >
       <Header header={ `Find That Pokémon` }/>
-      <button onClick={ getCoords } >CLICK ME</button>
+      <div id='overlay'>
+        <div className='startContainer'>
+          <h1>FIND US</h1>
+          <div className='findUsList'>
+            { findItems.map(( item ) => {
+              return <Icon key={ item.id } icon={ item.icon } name={ item.name } />;
+            }) }
+          </div>
+          <button onClick={ getCoords } > NEW GAME </button>
+        </div>
+      </div>
       <div className='content-container'>
         <Sidebar findItems={ findItems }/>
         <Photo currentItem={ currentItem } setCurrentItem={ setCurrentItem }
@@ -53,8 +66,11 @@ const App = () => {
         onOpen={ onOpen }
         alt=' PHOTO OF POKEMON FANART '/>
       </div>
-      <Snackbar open={ openSnackbar } autoHideDuration={ 500 }
-      onClose={ closeSnckbar } message={ `${currentItem} is found` } />
+      <Snackbar open={ openSnackbar } autoHideDuration={ 700 }
+      onClose={ closeSnckbar } anchorOrigin={{ vertical: 'top', horizontal: 'center' }} >
+        <SnackbarContent style={{ backgroundColor: 'green', }}
+        message={ <span id='client-snackbar'>{ `${ currentItem } is found!` }</span> }/>
+      </Snackbar>
     </div>
   );
 };
