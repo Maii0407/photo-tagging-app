@@ -34,15 +34,6 @@ const App = () => {
     setTimerStatus( true );
   };
 
-  const endGame = () => {
-    if( findItems.length === 0 ) {
-      setTimerStatus( false );
-      alert( 'YOU FOUND ALL THE POKEMON' );
-    } else {
-      return;
-    }
-  };
-
   const removeFindItems = ( obj ) => {
     setFindItems( findItems.filter(( val ) => val.name !== obj.name ) );
   };
@@ -66,10 +57,19 @@ const App = () => {
       timerID = setInterval(() => {
         setCount( count + 1 );
       }, 1000);
-    }
+    };
 
     return () => clearInterval( timerID );
   }, [ timerStatus, count ]);
+
+  useEffect(() => {
+    if( findItems.length === 0 ) {
+      setTimerStatus( false );
+      alert( 'YOU FOUND ALL POKEMON' );
+    } else {
+      return;
+    };
+  }, [ findItems ]);
 
   return (
     <div className='App' >
@@ -93,8 +93,7 @@ const App = () => {
         <Photo currentItem={ currentItem } setCurrentItem={ setCurrentItem }
         mapCoords={ mapCoords } findItems={ findItems }
         removeFindItems={ removeFindItems } photo={ murataArt }
-        onOpen={ onOpen } endGame={ endGame }
-        alt=' PHOTO OF POKEMON FANART '/>
+        onOpen={ onOpen } alt=' PHOTO OF POKEMON FANART '/>
       </div>
       <Snackbar open={ openSnackbar } autoHideDuration={ 700 }
       onClose={ closeSnckbar } anchorOrigin={{ vertical: 'top', horizontal: 'center' }} >

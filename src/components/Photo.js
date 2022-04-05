@@ -4,8 +4,7 @@ import { Dropdown } from './Dropdown';
 import { AreaMap } from './AreaMap';
 
 const Photo = ( props ) => {
-  const { findItems,removeFindItems, mapCoords, currentItem, setCurrentItem, onOpen,
-          endGame } = props;
+  const { findItems,removeFindItems, mapCoords, currentItem, setCurrentItem, onOpen } = props;
 
   const [ menuState, setMenuState ] = useState('hide');
   const [ menuPos, setMenuPos ] = useState({ left: 0, top: 0 });
@@ -27,12 +26,10 @@ const Photo = ( props ) => {
 
   const foundItem = ( obj ) => {
     if( currentItem === '' ) {
-      endGame();
       return;
     } else if( currentItem === obj.name ) {
       removeFindItems( obj );
       onOpen();
-      endGame()
     }
   };
 
