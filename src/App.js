@@ -8,6 +8,7 @@ import { Timer } from './components/Timer';
 import { Sidebar } from './components/SideBar';
 import { NewGame } from './components/NewGameOverlay';
 import { Form } from './components/FormOverlay';
+import { Scoreboard } from './components/ScoreboardOverlay';
 
 import './App.css';
 import murataArt from './assets/murata-POKEMON.png';
@@ -25,6 +26,10 @@ const App = () => {
   const [ openSnackbar, setOpenSnackbar ] = useState( false );
   const [ timerStatus, setTimerStatus ] = useState( false );
   const [ count, setCount ] = useState( 0 );
+
+  const replayGame = () => {
+    setFindItems( cardList );
+  };
 
   const startGame = async () => {
     //this fetches the area maps from firestore
@@ -81,6 +86,7 @@ const App = () => {
       </div>
       <NewGame startGame={ startGame } findItems={ findItems } />
       <Form count={ count } setCount={ setCount }/>
+      <Scoreboard replayGame={ replayGame }/>
       <div className='content-container'>
         <Sidebar findItems={ findItems }/>
         <Photo currentItem={ currentItem } setCurrentItem={ setCurrentItem }
@@ -89,7 +95,7 @@ const App = () => {
         onOpen={ onOpen } alt=' PHOTO OF POKEMON FANART '/>
       </div>
       <Snackbar open={ openSnackbar } autoHideDuration={ 700 }
-      onClose={ closeSnckbar } anchorOrigin={{ vertical: 'top', horizontal: 'center' }} >
+      onClose={ closeSnckbar } anchorOrigin={{ vertical: 'top', horizontal: 'center', }} >
         <SnackbarContent style={{ backgroundColor: 'green', }}
         message={ <span id='client-snackbar'>{ `${ currentItem } is found!` }</span> }/>
       </Snackbar>

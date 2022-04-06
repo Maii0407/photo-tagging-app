@@ -5,6 +5,7 @@ const Form = ( props ) => {
 
   const closeForm = () => {
     document.getElementById( 'form-overlay' ).style.display = 'none';
+    document.getElementById( 'scoreboard-overlay' ).style.display = 'block';
   };
 
   const submitTime = (e) => {
@@ -12,6 +13,7 @@ const Form = ( props ) => {
 
     document.getElementById( 'form-overlay' ).style.display = 'none';
     setCount(0);
+    document.getElementById( 'scoreboard-overlay' ).style.display = 'block';
   };
 
   return (
