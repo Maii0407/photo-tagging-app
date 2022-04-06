@@ -6,7 +6,8 @@ import { Photo } from './components/Photo';
 import { Header } from './components/Header';
 import { Timer } from './components/Timer';
 import { Sidebar } from './components/SideBar';
-import { Icon } from './components/Icon';
+import { NewGame } from './components/NewGameOverlay';
+import { Form } from './components/FormOverlay';
 
 import './App.css';
 import murataArt from './assets/murata-POKEMON.png';
@@ -62,10 +63,11 @@ const App = () => {
     return () => clearInterval( timerID );
   }, [ timerStatus, count ]);
 
+//makes the game end if findItems array length equals to 0
   useEffect(() => {
     if( findItems.length === 0 ) {
       setTimerStatus( false );
-      alert( 'YOU FOUND ALL POKEMON' );
+      document.getElementById( 'form-overlay' ).style.display = 'block';
     } else {
       return;
     };
@@ -77,17 +79,8 @@ const App = () => {
         <Header header={ `Find That Pokémon` }/>
         <Timer count={ count } />
       </div>
-      <div id='overlay'>
-        <div className='startContainer'>
-          <h1>FIND US</h1>
-          <div className='findUsList'>
-            { findItems.map(( item ) => {
-              return <Icon key={ item.id } icon={ item.icon } name={ item.name } />;
-            }) }
-          </div>
-          <button onClick={ startGame } > NEW GAME </button>
-        </div>
-      </div>
+      <NewGame startGame={ startGame } findItems={ findItems } />
+      <Form count={ count } setCount={ setCount }/>
       <div className='content-container'>
         <Sidebar findItems={ findItems }/>
         <Photo currentItem={ currentItem } setCurrentItem={ setCurrentItem }
