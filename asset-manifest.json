@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/photo-tagging-app/static/css/main.28dafa61.css",
+    "main.js": "/photo-tagging-app/static/js/main.962351ba.js",
+    "static/media/murata-POKEMON.png": "/photo-tagging-app/static/media/murata-POKEMON.b65b34ab51c091e59465.png",
+    "static/media/piplup.png": "/photo-tagging-app/static/media/piplup.c52bdb90cd68df9f681e.png",
+    "static/media/mincinno.png": "/photo-tagging-app/static/media/mincinno.e84ccc6c32c85c820c92.png",
+    "static/media/suicune.webp": "/photo-tagging-app/static/media/suicune.5481fc9ff389ad958775.webp",
+    "static/media/umbreon.png": "/photo-tagging-app/static/media/umbreon.3213534e9c9c229085b9.png",
+    "static/media/serperior.png": "/photo-tagging-app/static/media/serperior.718d92c328b50605f55a.png",
+    "static/media/garchomp.webp": "/photo-tagging-app/static/media/garchomp.eb620796d2a8c774d1ed.webp",
+    "static/media/metalgross.webp": "/photo-tagging-app/static/media/metalgross.8c5dcc7eba13517e6b19.webp",
+    "static/media/meloetta.png": "/photo-tagging-app/static/media/meloetta.66bc89aee82eafcb9a6c.png",
+    "static/media/latias.png": "/photo-tagging-app/static/media/latias.3262ec9ae3cca563f909.png",
+    "static/media/diglett.png": "/photo-tagging-app/static/media/diglett.81af9f95195fd804e64f.png",
+    "static/media/pikachu.png": "/photo-tagging-app/static/media/pikachu.1a8d8033ed06cd6cbe89.png",
+    "static/media/megaBlaziken.png": "/photo-tagging-app/static/media/megaBlaziken.3442e7eaca8e2b86f8e3.png",
+    "static/media/lucario.png": "/photo-tagging-app/static/media/lucario.352360a9ae8bc315204f.png",
+    "index.html": "/photo-tagging-app/index.html",
+    "main.28dafa61.css.map": "/photo-tagging-app/static/css/main.28dafa61.css.map",
+    "main.962351ba.js.map": "/photo-tagging-app/static/js/main.962351ba.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.28dafa61.css",
+    "static/js/main.962351ba.js"
+  ]
+}
