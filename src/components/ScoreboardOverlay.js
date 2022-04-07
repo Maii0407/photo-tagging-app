@@ -1,12 +1,7 @@
-import React, { useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-
-import { database } from '/home/akmal-izuddin/Desktop/the-odin-project/photo-tagging-app/src/firebase-config.js';
+import React from 'react';
 
 const Scoreboard = ( props ) => {
-  const { replayGame } = props;
-
-  const [ scoreArray, setScoreArray ] = useState([]);
+  const { replayGame, scoreArray } = props;
 
   const handleClick = () => {
     replayGame();
@@ -18,15 +13,26 @@ const Scoreboard = ( props ) => {
       <div className='scoreboard'>
         <h1>SCOREBOARD</h1>
         <div className='score-container'>
-          { scoreArray.map(( obj ) => {
-            return <div className='score'>
-              <p>{ obj.index + 1 }</p>
-              <p>{ obj.name }</p>
-              <p>{ obj.time }</p>
-              <p>{ obj.date }</p>
-            </div>
-          }) }
+          <table>
+            <thead>
+              <tr>
+                <th>PLACE</th>
+                <th>NAME</th>
+                <th>TIME</th>
+              </tr>
+            </thead>
+            <tbody>
+              { scoreArray.map(( obj ) => {
+                return <tr key={ scoreArray.indexOf( obj ) } className='score'>
+                  <td>{ scoreArray.indexOf( obj ) + 1 }</td>
+                  <td>{ obj.name }</td>
+                  <td>{ `${obj.time} SECONDS` }</td>
+                </tr>
+              }) }
+            </tbody>
+          </table>
         </div>
+        
         <button onClick={ handleClick }>NEW GAME</button>
       </div>
     </div>

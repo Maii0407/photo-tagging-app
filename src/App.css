@@ -178,6 +178,26 @@ form input {
   width: 100%;
   height: 75%;
   overflow-x: hidden;
+  border: 1px solid red;
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+  height: 40px;
+}
+
+th {
+  background-color: black;
+  color: silver;
+}
+
+td {
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 /* styling for App component */

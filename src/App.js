@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
 import Snackbar from '@material-ui/core/Snackbar';
 
 import { Photo } from './components/Photo';
@@ -19,6 +19,7 @@ import { SnackbarContent } from '@material-ui/core';
 const App = () => {
   const { cardList } = data;
   const coordsRef = collection( database, 'imageCoords' );
+  const scoreRef = collection( database, 'scoreBoard' );
 
   const [ findItems, setFindItems ] = useState( cardList );
   const [ mapCoords, setMapCoords ] = useState([]);
@@ -26,6 +27,7 @@ const App = () => {
   const [ openSnackbar, setOpenSnackbar ] = useState( false );
   const [ timerStatus, setTimerStatus ] = useState( false );
   const [ count, setCount ] = useState( 0 );
+  const [ scoreArray, setScoreArray ] = useState([]);
 
   const replayGame = () => {
     setFindItems( cardList );
@@ -38,6 +40,25 @@ const App = () => {
     //this makes the overlay disapppear
     document.getElementById( 'overlay' ).style.display = 'none';
     setTimerStatus( true );
+  };
+
+  const saveScore = async ( nameText ) => {
+    try{
+      await addDoc( scoreRef, {
+        name: nameText,
+        time: count,
+      })
+    }
+    catch( error ) {
+      console.error( 'Error in sending score to database', error );
+    }
+  };
+
+  const getScores = async () => {
+    const data = await getDocs( scoreRef );
+    const newArray = data.docs.map(( doc ) => ({ ...doc.data() }));
+    const sortArray = newArray.sort(( a, b ) => { return a-b });
+    setScoreArray( sortArray );
   };
 
   const removeFindItems = ( obj ) => {
@@ -85,8 +106,8 @@ const App = () => {
         <Timer count={ count } />
       </div>
       <NewGame startGame={ startGame } findItems={ findItems } />
-      <Form count={ count } setCount={ setCount }/>
-      <Scoreboard replayGame={ replayGame }/>
+      <Form count={ count } setCount={ setCount } getScores={ getScores } saveScore={ saveScore } />
+      <Scoreboard replayGame={ replayGame } scoreArray={ scoreArray }/>
       <div className='content-container'>
         <Sidebar findItems={ findItems }/>
         <Photo currentItem={ currentItem } setCurrentItem={ setCurrentItem }
