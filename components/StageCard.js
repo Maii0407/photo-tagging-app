@@ -1,3 +1,5 @@
+import NextLink from 'next/link';
+
 import {
   Flex,
   Text,
@@ -7,6 +9,8 @@ import {
 export const StageCard = ({ objData }) => {
   return (
     <Flex
+      as={ NextLink }
+      href={ `/${ objData.id }` }
       direction='column'
       alignItems='center'
       gap='10px'

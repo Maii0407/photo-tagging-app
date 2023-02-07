@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>PokeTag</title>
+        <title>PokeSeek</title>
       </Head>
       <ChakraProvider theme={ theme } >
         <Component {...pageProps} />
