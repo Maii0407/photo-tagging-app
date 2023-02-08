@@ -6,12 +6,6 @@ Where's that Pokemon?
 ![portfolio](docs/pokeseek-desktop.gif)
 
 #### 💡 Features
-* Implemented card shuffling logic using Fisher-Yates algorithm:
-* User highscore is saved in local storage, allowing users to keep track of their best scores and compete against themselves over time.
-* Responsive on mobile and 
-
-
-#### 🛠️ Built with
 * Technology Stack:
 The application is built using Next.js, Chakra UI and Firebase. Next.js provides server-side rendering, optimized performance, and automatic code splitting, making it a powerful framework for building scalable web applications. Chakra UI is used for creating a responsive and accessible UI, while Firebase is used for data storage and retrieval.
 
@@ -57,10 +51,17 @@ The image hotspots in the application are made using usemap and are fully respon
 ```
  This ensures a seamless experience for users regardless of the device they are using. These hotspots allow users to interact with the images, making it easier to find Waldo in each stage.
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-#### 🛠️ Future Features:
+#### 🛠️ Built with
+* Next.js
+* Firebase
+* Chakra UI
+
+
+ #### 🛠️ Future Features:
 * Adding functionality to save users highscore (duration to find all pokemon in a stage)
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
