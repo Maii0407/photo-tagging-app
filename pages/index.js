@@ -8,25 +8,26 @@ import { StageCard } from "@/components/StageCard";
 import {
   Flex,
   Grid,
+  Button
 } from "@chakra-ui/react";
 
 export default function Home({ allLevels }) {
-  // const saveAllLevels = async () => {
-  //   try {
-  //     for( let i = 0; i < levels.length; i++ ) {
-  //       const data = await addDoc( collection( database, 'levels' ), {
-  //         ...levels[i]
-  //       });
+  const saveAllLevels = async () => {
+    try {
+      for( let i = 0; i < levels.length; i++ ) {
+        const data = await addDoc( collection( database, 'levels' ), {
+          ...levels[i]
+        });
 
-  //       console.log( `Document save with ID: ${ data.id }` );
-  //     };
+        console.log( `Document save with ID: ${ data.id }` );
+      };
 
-  //     console.log( 'finished' );
-  //   }
-  //   catch( error ) {
-  //     console.log({ error });
-  //   }
-  // };
+      console.log( 'finished' );
+    }
+    catch( error ) {
+      console.log({ error });
+    }
+  };
 
   return (
     <Flex

@@ -1,4 +1,66 @@
+# PokeSeek
+Where's that Pokemon?
+
+### [Live Demo](https://pokeseek.vercel.app/)
+
+![portfolio](docs/pokeseek-desktop.gif)
+
+#### 💡 Features
+* Implemented card shuffling logic using Fisher-Yates algorithm:
+* User highscore is saved in local storage, allowing users to keep track of their best scores and compete against themselves over time.
+* Responsive on mobile and 
+
+
+#### 🛠️ Built with
+* Technology Stack:
+The application is built using Next.js, Chakra UI and Firebase. Next.js provides server-side rendering, optimized performance, and automatic code splitting, making it a powerful framework for building scalable web applications. Chakra UI is used for creating a responsive and accessible UI, while Firebase is used for data storage and retrieval.
+
+* Data Retrieval:
+The application fetches stage data from Firestore, which is a NoSQL database provided by Firebase. This allows for easy data retrieval and storage, making it quick and simple to access the necessary information for the application.
+
+* Image Hotspots:
+The image hotspots in the application are made using usemap and are fully responsive, using the following code:
+```
+  const [ width, setWidth ] = useState(0);
+  const [ height, setHeight ] = useState(0);
+
+  //original image resolution
+  const originalWidth = 900;
+  const originalHeight = 1200;
+
+  //function to return coords of each area map based on level.hotspots
+  const returnAreaMap = ( obj ) => {
+    const x1 = obj.coords[0] * ( width / originalWidth );
+    const y1 = obj.coords[1] * ( height / originalHeight );
+    const x2 = obj.coords[2] * ( width / originalWidth );
+    const y2 = obj.coords[3] * ( height / originalHeight );
+
+    return `${ x1 }, ${ y1 }, ${ x2 }, ${ y2 }`
+  };
+
+  useEffect(() => {
+    const image = document.querySelector( '#level-image' );
+    setWidth( image.clientWidth );
+    setHeight( image.clientHeight );
+
+    const handleResize = () => {
+      setWidth( image.clientWidth );
+      setHeight( image.clientHeight );
+    }
+
+    window.addEventListener( 'resize', handleResize );
+
+    return () => {
+      window.removeEventListener( 'resize', handleResize );
+    }
+  }, [])
+```
+ This ensures a seamless experience for users regardless of the device they are using. These hotspots allow users to interact with the images, making it easier to find Waldo in each stage.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+#### 🛠️ Future Features:
+* Adding functionality to save users highscore (duration to find all pokemon in a stage)
 
 ## Getting Started
 
@@ -13,26 +75,3 @@ pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
